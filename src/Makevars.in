@@ -1,5 +1,5 @@
 
-## We now use configure to find where NLopt is installed. 
+## We now use configure to find where NLopt is installed.
 ##
 ## If it is not found, it is downloaded and installed from source -- but such
 ## a build scheme is not permitted within Debian, or on Launchpad, or ... so
@@ -42,11 +42,11 @@ PKG_LIBS=@PKG_LIBS@
 # 08-07-2013: Added `pwd` to NLOPTR_LIBS and NLOPTR_INCL.
 # 05-11-2013: Changed NLOPT_VERSION to 2.4
 # 07-11-2013: Removed -lstdc++ from linker statement. A file dummy.cpp (with C++ extension)
-#             is added to the source directory to ensure linking with C++. Thanks to 
+#             is added to the source directory to ensure linking with C++. Thanks to
 #             Brian Ripley for bringing this up.
 # 12-11-2013: Replace 'sqrt(' by 'sqrt((double) ' in isres/isres/c in NLopt. This cast
 #             is not implemented in NLopt, but causes compilation errors on some systems.
-# 19-11-2013: Wrap code in util/qsort_r.c in NLopt in extern "C" as requested by Brian 
+# 19-11-2013: Wrap code in util/qsort_r.c in NLopt in extern "C" as requested by Brian
 #             Ripley to fix compilation on Solaris.
 # 07-07-2014: Changed NLOPT_VERSION to 2.4.2
 
@@ -54,15 +54,15 @@ PKG_LIBS=@PKG_LIBS@
 # NLOPT_VERSION = 2.4.2
 
 # # C Compiler options
-# NLOPTR_CFLAGS = 
+# NLOPTR_CFLAGS =
 
 # # additional C Compiler options for linking
-# NLOPTR_CLINKFLAGS = 
+# NLOPTR_CLINKFLAGS =
 
 # # Libraries necessary to link with NLopt
 # NLOPTR_LIBS = -lm `pwd`/nlopt-${NLOPT_VERSION}/lib/libnlopt_cxx.a
 
-# # Necessary Include dirs 
+# # Necessary Include dirs
 # NLOPTR_INCL = -I`pwd`/nlopt-${NLOPT_VERSION}/include
 
 # # Get R compilers and flags
@@ -86,13 +86,13 @@ PKG_LIBS=@PKG_LIBS@
 # PKG_CFLAGS=${NLOPTR_CFLAGS} ${NLOPTR_INCL}
 
 # .PHONY: all
-     
+
 # all: $(SHLIB)
 
 # $(SHLIB): nlopt-${NLOPT_VERSION}/lib/libnlopt_cxx.a ${OBJECTS}
 
 # nloptr.o: nlopt-${NLOPT_VERSION}/include/nlopt.h
-  
+
 # # Compile NLopt source code and clean up
 # # --prefix="`pwd`", which is the directory we want to
 # # install in, after we changed our current directory
@@ -117,10 +117,9 @@ PKG_LIBS=@PKG_LIBS@
 # # Download NLopt source code
 # # curl -O http://ab-initio.mit.edu/nlopt/nlopt-${NLOPT_VERSION}.tar.gz
 # nlopt-${NLOPT_VERSION}.tar.gz:
-# 	`"${R_HOME}/bin/Rscript" --vanilla -e "download.file(url='http://ab-initio.mit.edu/nlopt/nlopt-${NLOPT_VERSION}.tar.gz', destfile='nlopt-${NLOPT_VERSION}.tar.gz')"`
+# 	`"${R_HOME}/bin/Rscript" --vanilla -e "download.file(url='http://ab-initio.mit.edu/nlopt/nlopt-${NLOPT_VERSION}.tar.gz', destfile='nlopt-${NLOPT_VERSION}.tar.gz', method='curl', extra='-L')"`
 
 # clean:
 # 	rm -rf *.so
 # 	rm -rf *.o
 # 	rm -rf nlopt-${NLOPT_VERSION}
-	
